@@ -23,7 +23,7 @@ h = (b-a)/N
 k = (d-c)/M  
 
 
-# Matriz soluciones
+# Matriz soluciones (x_i, y_j)
 w = np.zeros((N+1, M+1))
 
 # CONDICIONES CONTORNO
@@ -35,7 +35,7 @@ for i in range(N+1):
     w[i][0] = f(x_i)
 
 for j in range(M+1):
-    y_i = c + j*k
+    y_j = c + j*k
     w[0][j] = 0
     w[N][j] = 0
 
