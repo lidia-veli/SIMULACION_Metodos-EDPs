@@ -27,9 +27,13 @@ for j in range(M+1):  # eje t
     w[j][0] = 0
     w[j][N] = 0
 
+
+def f(x):
+    return np.exp(-(x-2.5)**2)
+
 for i in range(N+1):  # eje x
     x_i = a + i*h
-    w[0][i] = np.exp(-(x_i-2.5)**2)
+    w[0][i] = f(x_i)
 
 
 # GAUSS-SEIDEL
