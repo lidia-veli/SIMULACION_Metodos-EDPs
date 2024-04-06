@@ -1,3 +1,12 @@
+'''
+U_xx + U_xy = 0
+0<x<0.5, 0<y<0.5
+
+condiciones:
+u(0,y) = u(0.5,y) = 0
+u(x,0) = e^(-(x-0.25)^2)
+'''
+
 import numpy as np
 import matplotlib.pyplot as plt
 

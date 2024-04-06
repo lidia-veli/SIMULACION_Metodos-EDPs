@@ -1,3 +1,12 @@
+'''
+U_xx + U_xy + U_yy = 0
+0<x<1, 0<y<1
+
+condiciones:
+u(0,y) = u(1,y) = u(x,1) = 0
+u(x,0) = e^(-(x-0.25)^2)
+'''
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -9,7 +18,7 @@ N = 30
 M = 30
 
 
-# Tamaño del paso
+# paso
 h = (b-a)/N  
 k = (d-c)/M  
 
