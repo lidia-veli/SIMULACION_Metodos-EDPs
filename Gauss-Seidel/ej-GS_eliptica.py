@@ -1,5 +1,5 @@
 '''
-Ec. Poisson
+ECUACIÓN POISSON
 U_xx + U_yy = f(x,y)
 0<x<1, 0<y<1
 f(x,y) = x*y*(1-x)*(1-y)

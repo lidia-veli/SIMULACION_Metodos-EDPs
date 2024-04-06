@@ -29,12 +29,12 @@ for j in range(M+1):
     w[N][j] = 0
 
 
-# Gauss-Seidel
-L = 2*(k**2+h**2)
-for _ in range(100):  # sistema lineal
-    for j in range(1,M):  # da igual i,j que j,i
+# GAUSS-SEIDEL
+for _ in range(100):  
+    for j in range(1,M):  
         for i in range(1,N):
-            w[i][j] = ( ((k**2)/L)*(w[i+1][j]+w[i-1][j]) + ((h*k)/(2*L))*(w[i+1][j+1]+w[i-1][j-1]-w[i-1][j+1]-w[i+1][j-1]) + ((h**2)/L)*(w[i][j+1]+w[i][j-1]) )
+            L = 2*(k**2+h**2)
+            w[i][j] = ((k**2)/L)*(w[i+1][j]+w[i-1][j]) + ((h*k/2)/L)*(w[i+1][j+1]+w[i-1][j-1]-w[i-1][j+1]-w[i+1][j-1]) + ((h**2)/L)*(w[i][j+1]+w[i][j-1])
 
 
 # Malla

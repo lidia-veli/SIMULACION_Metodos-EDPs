@@ -13,38 +13,37 @@ import matplotlib.pyplot as plt
 
 # PARÁMETROS
 a, b = 0, 1  # x
-c, d = 0, 1  # y
+c, d = 0, 1  # y(x)
 N = 30
 M = 30
-
 
 # paso
 h = (b-a)/N  
 k = (d-c)/M  
 
 
-# Matriz soluciones
+# Matriz soluciones (x_i, y_j)
 w = np.zeros((N+1, M+1))
 
 # CONDICIONES CONTORNO
 
-for i in range(N+1):
+for i in range(N+1):  # eje x
     x_i = a + i*h
     w[i][0] = np.exp(-(x_i-0.25)**2)
     w[i][M] = 0
 
-for j in range(M+1):
-    y_i = c + j*k
+for j in range(M+1):  # eje y
+    y_j = c + j*k
     w[0][j] = 0
     w[N][j] = 0
 
 
-# Gauss-Seidel
-for _ in range(100):  # sistema lineal
+# GAUSS-SEIDEL
+L = 2*(h**2 + k**2)
+for _ in range(100):
     for j in range(1,M):  # da igual i,j que j,i
         for i in range(1,N):
-            # mal w[i][j] = ( ((k**2)/(2*(k**2+h**2)))*(w[i+1][j]+w[i-1][j]) + ((h*k)/(2*(k**2+h**2)))*(w[i+1][j+1]+w[i-1][j-1]-w[i-1][j+1]-w[i+1][j-1]) + ((h**2)/(2*(k**2+h**2)))*(w[i][j+1]+w[i][j-1]) )
-            w[i][j] = ((k**2)/(2*(h**2)+(k**2)))*(w[i+1][j] + w[i-1][j]) + ((h**2)/(2*(h**2)+(k**2)))*(w[i][j+1] + w[i][j-1]) + ((h*k)/(8*(h**2)+(k**2)))*(w[i+1][j+1] + w[i-1][j-1] - w[i-1][j+1] - w[i+1][j-1])
+            w[i][j] = ((k**2)/L)*(w[i+1][j]+w[i-1][j]) + ((h**2)/L)*(w[i][j+1]+w[i][j-1]) + ((h*k)/(4*L))*(w[i+1][j+1]+w[i-1][j-1]-w[i-1][j+1]-w[i+1][j-1])
 
 # Malla
 x = np.linspace(a, b, N+1)
